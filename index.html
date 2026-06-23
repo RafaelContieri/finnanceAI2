@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinnanceAI - Gestão Financeira Inteligente</title>
+  <meta name="description" content="Gerencie suas finanças pessoais sem esforço via WhatsApp com uma plataforma intuitiva e planos flexíveis." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <img src="./img/imagemsvg.svg" alt="FinnanceAI" width="1300px" background-color="white">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Recursos</a></li>
+        <li><a href="#pricing">Planos</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="btn btn-primary" id="header-login-btn" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
+          <i data-lucide="user" style="width: 16px; height: 16px;"></i> Entrar
+        </button>
+        <div class="user-profile" id="user-profile" style="display: none; cursor: pointer;">
+          <div class="user-avatar" id="user-initial">R</div>
+          <span id="user-name">Rafael</span>
+          <button class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;" id="logout-btn">Sair</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+
+    <!-- ========== LOGIN PAGE ========== -->
+    <div id="page-login" class="page">
+      <div class="auth-container">
+        <div class="auth-card">
+          <h1>Bem-vindo</h1>
+          <p>Acesse sua conta para gerenciar suas finanças</p>
+
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="login-password">Senha</label>
+              <input type="password" id="login-password" placeholder="••••••••" required>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="remember-me">
+              <label for="remember-me" class="checkbox-label">Lembrar de mim</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large btn-block" id="demo-login">Entrar</button>
+          </form>
+
+
+          
+
+          <p class="auth-footer">
+            Não tem uma conta? <a href="#" id="signup-link" class="link">Cadastre-se aqui</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SIGNUP PAGE ========== -->
+    <div id="page-signup" class="page">
+      <div class="auth-container">
+        <div class="auth-card">
+          <h1>Cadastro</h1>
+          <p>Crie sua conta e comece a controlar suas finanças</p>
+
+          <form id="signup-form">
+            <div class="form-group">
+              <label for="signup-name">Nome Completo</label>
+              <input type="text" id="signup-name" placeholder="Seu Nome" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-password">Senha</label>
+              <input type="password" id="signup-password" placeholder="••••••••" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-confirm-password">Confirmar Senha</label>
+              <input type="password" id="signup-confirm-password" placeholder="••••••••" required>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="signup-terms" required>
+              <label for="signup-terms" class="checkbox-label">
+                Aceito os <a href="#" class="link">termos de serviço</a>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large btn-block">Criar Conta</button>
+          </form>
+
+          <p class="auth-footer">
+            Já tem uma conta? <a href="#" id="login-link-signup" class="link">Entre aqui</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== HOME PAGE ========== -->
+    <div id="page-home" class="page">
+      <section class="hero" id="features">
+        <div class="hero-content">
+          <h1>Suas finanças controladas via <span>WhatsApp</span>.</h1>
+          <p>Esqueça planilhas complicadas ou apps pesados. Adicione despesas, defina metas e acompanhe gráficos completos conversando com nossa inteligência artificial.</p>
+          <div class="hero-buttons">
+            <a href="#pricing" class="btn btn-primary">Escolher Plano</a>
+            <a href="#" class="btn btn-outline" id="btn-demo">
+              <i data-lucide="play" style="width: 16px;"></i> Simular Mensagem
+            </a>
+          </div>
+        </div>
+        
+        <div class="mockup-wrapper">
+          <div class="mockup-whatsapp">
+            <div class="wa-header">
+              <div class="wa-avatar">
+                <i data-lucide="bot" style="width:16px; height:16px;"></i>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: 600;">FinnanceAI Bot</p>
+                <p style="margin: 0; font-size: 0.75rem; color: var(--primary); font-weight: 400;" id="wa-status">online</p>
+              </div>
+            </div>
+            
+            <div class="wa-body" id="chat-body">
+              <div class="message msg-bot">Olá! 👋 Digite qualquer gasto ou ganho para testar (Ex: "Almoço 35 reais" ou "Recebi pix de 200").</div>
+            </div>
+
+            <form class="wa-input-container" id="chat-form">
+              <input type="text" id="chat-input" placeholder="Digite uma mensagem..." autocomplete="off">
+              <button type="submit">
+                <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing" id="pricing">
+        <div class="pricing-header">
+          <h2>Planos Simples</h2>
+          <p>Coloque sua vida financeira nos eixos com transparência e sem taxas escondidas.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="card">
+            <h3>Plano Inicial</h3>
+            <p style="color: var(--muted-foreground); font-size: 0.9rem;">Para testar o poder da IA</p>
+            <div class="price">R$ 0 <span>/mês</span></div>
+            <ul class="features-list">
+              <li><i data-lucide="check" style="color: var(--primary); width:18px;"></i> Até 15 lançamentos mensais</li>
+              <li><i data-lucide="check" style="color: var(--primary); width:18px;"></i> Relatório básico semanal</li>
+              <li><i data-lucide="check" style="color: var(--primary); width:18px;"></i> Integração direta no WhatsApp</li>
+            </ul>
+            <button class="btn btn-outline plan-btn btn-block" data-plan="Plano Inicial" data-price="0">Começar Grátis</button>
+          </div>
+
+          <div class="card featured">
+            <div class="badge">Recomendado</div>
+            <h3>Plano Pro</h3>
+            <p style="color: var(--muted-foreground); font-size: 0.9rem;">Para quem busca liberdade e controle total</p>
+            <div class="price">R$ 19,90 <span>/mês</span></div>
+            <ul class="features-list">
+              <li><i data-lucide="check" style="color: var(--primary); width:18px;"></i> Lançamentos ilimitados</li>
+              <li><i data-lucide="check" style="color: var(--primary); width:18px;"></i> Dashboard Web completo</li>
+              <li><i data-lucide="check" style="color: var(--primary); width:18px;"></i> Alertas inteligentes</li>
+              <li><i data-lucide="check" style="color: var(--primary); width:18px;"></i> Suporte prioritário</li>
+            </ul>
+            <button class="btn btn-primary plan-btn btn-block btn-large" data-plan="Plano Pro" data-price="19.90">Assinar Agora</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ========== CHECKOUT PAGE ========== -->
+    <div id="page-checkout" class="page">
+      <div class="checkout-container">
+        <div class="checkout-form">
+          <h2>Informações de Pagamento</h2>
+
+          <form id="checkout-form">
+            <!-- Endereço -->
+            <div class="form-section">
+              <h3>
+                <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+                Endereço
+              </h3>
+
+              <div class="form-group">
+                <label for="full-name">Nome Completo</label>
+                <input type="text" id="full-name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email-checkout">Email</label>
+                <input type="email" id="email-checkout" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="tel" id="phone" placeholder="(11) 99999-9999" required>
+              </div>
+
+              <div class="form-group">
+                <label for="address">Endereço</label>
+                <input type="text" id="address" placeholder="Rua, número" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">Cidade</label>
+                  <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                  <label for="state">Estado</label>
+                  <select id="state" required>
+                    <option value="">Selecione um estado</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="BA">Bahia</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="PR">Paraná</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="zipcode">CEP</label>
+                <input type="text" id="zipcode" placeholder="00000-000" required>
+              </div>
+            </div>
+
+            <!-- Método de Pagamento -->
+            <div class="form-section">
+              <h3>
+                <i data-lucide="credit-card" style="width: 18px; height: 18px;"></i>
+                Método de Pagamento
+              </h3>
+
+              <div class="payment-methods">
+                <label class="payment-method">
+                  <input type="radio" name="payment-method" value="credit-card" checked>
+                  <i data-lucide="credit-card" style="width: 20px; height: 20px;"></i>
+                  <span>Cartão de Crédito</span>
+                </label>
+
+                <label class="payment-method">
+                  <input type="radio" name="payment-method" value="pix">
+                  <i data-lucide="zap" style="width: 20px; height: 20px;"></i>
+                  <span>PIX</span>
+                </label>
+
+                <label class="payment-method">
+                  <input type="radio" name="payment-method" value="bank-transfer">
+                  <i data-lucide="bank" style="width: 20px; height: 20px;"></i>
+                  <span>Transferência Bancária</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Dados do Cartão -->
+            <div class="form-section">
+              <h3>
+                <i data-lucide="lock" style="width: 18px; height: 18px;"></i>
+                Dados do Cartão
+              </h3>
+
+              <div class="form-group">
+                <label for="card-name">Nome do Titular</label>
+                <input type="text" id="card-name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="card-number">Número do Cartão</label>
+                <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="card-expiry">Validade</label>
+                  <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" required>
+                </div>
+                <div class="form-group">
+                  <label for="card-cvv">CVV</label>
+                  <input type="text" id="card-cvv" placeholder="000" maxlength="3" required>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large btn-block" style="margin-top: 2rem;">
+              Finalizar Compra
+            </button>
+          </form>
+        </div>
+
+        <!-- Resumo do Pedido -->
+        <div class="checkout-summary" id="checkout-summary">
+          <h2>Resumo do Pedido</h2>
+
+          <div class="summary-item">
+            <span>Plano</span>
+            <span id="summary-plan">Plano Pro</span>
+          </div>
+
+          <div class="summary-item">
+            <span>Ciclo de Faturamento</span>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; margin: 0; cursor: pointer;">
+                <input type="radio" name="billing-cycle" value="monthly" checked>
+                <span>Mensal</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.5rem; margin: 0; cursor: pointer;">
+                <input type="radio" name="billing-cycle" value="yearly">
+                <span>Anual (economize 20%)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="summary-item">
+            <span>Preço Base</span>
+            <span id="checkout-summary" data-plan-price>R$ 19.90</span>
+          </div>
+
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="summary-total" data-total>R$ 19.90</span>
+          </div>
+
+          <div class="alert alert-info" style="margin-top: 1.5rem;">
+            <i data-lucide="info" style="width: 18px; height: 18px; flex-shrink: 0;"></i>
+            <span>Você pode cancelar a assinatura a qualquer momento.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CONFIRMATION PAGE ========== -->
+    <div id="page-confirmation" class="page">
+      <div class="confirmation-container">
+        <div class="confirmation-card">
+          <div class="success-icon">
+            <i data-lucide="check" style="width: 48px; height: 48px; color: var(--primary);"></i>
+          </div>
+
+          <h1>Assinatura Confirmada! 🎉</h1>
+          <p>Sua assinatura foi processada com sucesso e está ativa agora.</p>
+
+          <div class="confirmation-details">
+            <div class="detail-item">
+              <span>Plano</span>
+              <span id="confirmation-plan">Plano Pro</span>
+            </div>
+            <div class="detail-item">
+              <span>Valor</span>
+              <span id="confirmation-price">R$ 19.90</span>
+            </div>
+            <div class="detail-item">
+              <span>Data de Início</span>
+              <span id="confirmation-date">22/06/2026</span>
+            </div>
+            <div class="detail-item">
+              <span>Próxima Renovação</span>
+              <span id="confirmation-next-billing">22/07/2026</span>
+            </div>
+          </div>
+
+          <div class="alert alert-success">
+            <i data-lucide="check-circle" style="width: 18px; height: 18px; flex-shrink: 0;"></i>
+            <span>Você agora tem acesso a todos os recursos do <strong id="confirmation-plan-name">Plano Pro</strong>!</span>
+          </div>
+
+          <div class="confirmation-actions">
+            <button class="btn btn-primary btn-large" onclick="pageManager.navigateTo('home')">
+              <i data-lucide="home" style="width: 16px;"></i> Voltar ao Início
+            </button>
+            <button class="btn btn-outline btn-large" onclick="alert('Um email de confirmação foi enviado para seu endereço.')">
+              <i data-lucide="mail" style="width: 16px;"></i> Ver Email
+            </button>
+          </div>
+
+          <p style="margin-top: 2rem; color: var(--muted-foreground); font-size: 0.9rem; text-align: center;">
+            Dúvidas? <a href="#" class="link">Entre em contato com nosso suporte</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SETTINGS PAGE ========== -->
+    <div id="page-settings" class="page">
+      <div class="settings-container">
+        <div class="settings-header">
+          <h1>Configurações da Conta</h1>
+          <p>Gerencie sua conta e assinatura</p>
+        </div>
+
+        <div class="settings-grid">
+          <!-- Informações do Perfil -->
+          <div class="settings-section">
+            <h2>
+              <i data-lucide="user" style="width: 20px; height: 20px;"></i>
+              Informações do Perfil
+            </h2>
+            <div class="profile-info">
+              <div class="profile-avatar-large" id="profile-avatar-large">R</div>
+              <div class="profile-details">
+                <div class="detail-row">
+                  <span class="label">Nome</span>
+                  <span class="value" id="settings-name">Rafael Silva</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Email</span>
+                  <span class="value" id="settings-email">rafael@email.com</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Membro desde</span>
+                  <span class="value" id="settings-member-since">22 de Junho de 2026</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline btn-large" style="margin-top: 1rem;">
+              <i data-lucide="edit" style="width: 16px;"></i> Editar Perfil
+            </button>
+          </div>
+
+          <!-- Assinatura Ativa -->
+          <div class="settings-section subscription-active">
+            <h2>
+              <i data-lucide="star" style="width: 20px; height: 20px;"></i>
+              Sua Assinatura
+            </h2>
+            <div class="subscription-info">
+              <div class="subscription-status">
+                <div class="status-badge active">
+                  <i data-lucide="check-circle" style="width: 16px; height: 16px;"></i> Ativo
+                </div>
+              </div>
+
+              <div class="subscription-details">
+                <div class="detail-row">
+                  <span class="label">Plano Atual</span>
+                  <span class="value plan-name" id="current-plan-name">Plano Pro</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Valor</span>
+                  <span class="value" id="current-plan-price">R$ 19.90</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Ciclo de Faturamento</span>
+                  <span class="value" id="current-billing-cycle">Mensal</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Data de Início</span>
+                  <span class="value" id="subscription-start-date">22 de Junho de 2026</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Próxima Renovação</span>
+                  <span class="value" id="subscription-next-billing">22 de Julho de 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="subscription-actions">
+              <button class="btn btn-outline">
+                <i data-lucide="upgrade" style="width: 16px;"></i> Fazer Upgrade
+              </button>
+              <button class="btn btn-outline" style="border-color: var(--danger); color: var(--danger);">
+                <i data-lucide="trash-2" style="width: 16px;"></i> Cancelar Assinatura
+              </button>
+            </div>
+          </div>
+
+          <!-- Histórico de Faturas -->
+          <div class="settings-section">
+            <h2>
+              <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>
+              Histórico de Faturas
+            </h2>
+            <div class="invoices-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Ação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>22/06/2026</td>
+                    <td>Plano Pro - Mensal</td>
+                    <td>R$ 19.90</td>
+                    <td><span class="badge badge-success">Pago</span></td>
+                    <td><button class="btn-link">Baixar</button></td>
+                  </tr>
+                  <tr>
+                    <td>22/05/2026</td>
+                    <td>Plano Pro - Mensal</td>
+                    <td>R$ 19.90</td>
+                    <td><span class="badge badge-success">Pago</span></td>
+                    <td><button class="btn-link">Baixar</button></td>
+                  </tr>
+                  <tr>
+                    <td>22/04/2026</td>
+                    <td>Plano Pro - Mensal</td>
+                    <td>R$ 19.90</td>
+                    <td><span class="badge badge-success">Pago</span></td>
+                    <td><button class="btn-link">Baixar</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Método de Pagamento -->
+          <div class="settings-section">
+            <h2>
+              <i data-lucide="credit-card" style="width: 20px; height: 20px;"></i>
+              Método de Pagamento
+            </h2>
+            <div class="payment-method-info">
+              <div class="card-preview">
+                <div class="card-brand">Visa</div>
+                <div class="card-number">•••• •••• •••• 4242</div>
+                <div class="card-details">
+                  <span>Válido até 12/28</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline btn-large" style="margin-top: 1rem;">
+              <i data-lucide="edit" style="width: 16px;"></i> Alterar Método de Pagamento
+            </button>
+          </div>
+
+          <!-- Segurança -->
+          <div class="settings-section">
+            <h2>
+              <i data-lucide="lock" style="width: 20px; height: 20px;"></i>
+              Segurança
+            </h2>
+            <div class="security-options">
+              <button class="btn btn-outline btn-large btn-block">
+                <i data-lucide="key" style="width: 16px;"></i> Alterar Senha
+              </button>
+              <button class="btn btn-outline btn-large btn-block" style="margin-top: 0.5rem;">
+                <i data-lucide="smartphone" style="width: 16px;"></i> Autenticação de Dois Fatores
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <p>&copy; 2026 FinnanceAI. Desenvolvido com foco em simplicidade.</p>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="script.js"></script>
+
+</body>
+</html>
